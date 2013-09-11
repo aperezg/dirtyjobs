@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130910135641) do
+ActiveRecord::Schema.define(version: 20130911174708) do
 
   create_table "comments", force: true do |t|
     t.text     "comment",                   null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20130910135641) do
   create_table "companies", force: true do |t|
     t.string   "name",                     null: false
     t.string   "address",                  null: false
+    t.integer  "user_id",                  null: false
     t.string   "url"
     t.string   "category"
     t.string   "image_uri"
@@ -38,7 +39,6 @@ ActiveRecord::Schema.define(version: 20130910135641) do
     t.integer  "status",     default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
     t.string   "slug",       default: "",  null: false
   end
 
