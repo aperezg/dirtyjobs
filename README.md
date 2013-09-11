@@ -1,7 +1,9 @@
 Dirty Jobs
 =========
 
-Este proyecto está basado en la idea de: http://trabajobasura.info. Es un simple proyecto de demo para practicar Ruby on Rails donde utilizar
+Este proyecto está basado en la idea de: http://trabajobasura.info que trata sobre dar de alta compañías para poder poner comentarios sobre ellas, buenos o malos. 
+
+El proyecto se ha realizado para practicar Ruby on Rails donde utilizar
 los conocimientos adquiridos durante mis cursos en http://codeschool.com
 
 Funcionalidades
