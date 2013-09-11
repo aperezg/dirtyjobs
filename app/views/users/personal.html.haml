@@ -1,0 +1,19 @@
+.row
+  .col-md-2
+    %img{src:asset_path('resources/no-image-user.png'), class:'img-circle', style:'width:100px; height:100px;'}
+  .col-md-10
+    %h2 
+      = current_user.username
+    %p
+      = current_user.email
+    %p
+      = "companies(#{@userPresenter.companies.count}) / comments(#{@userPresenter.comments_total})"
+.row
+  .col-md-12
+    %h3 
+      = "Companies added for #{current_user.username}"
+  .col-md-12
+    %span
+      = link_to "Add company", new_company_path
+  .col-md-12
+    = render 'shared/companies', :companies => @userPresenter.companies

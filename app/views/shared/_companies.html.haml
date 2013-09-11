@@ -1,0 +1,13 @@
+%table.table
+ %tr
+  %th Name
+  %th Url
+  %th Rating
+  - companies.each do |company|
+   %tr
+    %td
+     = link_to company.name, company_path(company)
+    %td 
+     = link_to company.url, company.url, target: :blank
+    %td
+     = company.rating

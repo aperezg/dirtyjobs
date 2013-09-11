@@ -1,0 +1,17 @@
+= form_tag(comments_path, class:'form-horizontal') do
+  .form-group
+    = text_area(:comment, :comment, size: "24x12", class:'form-control')
+  .form-group
+    = label_tag('Your opinion is based in:')
+  .radio
+    = label_tag(:based_opinion_gossips, 'Gossips')
+    = radio_button(:comment, :based_opinion, Comment::BASED_OPINION[:gossips], select:true)
+  .radio
+    = label_tag(:based_opinion_gossips, 'In a interview')
+    = radio_button(:comment, :based_opinion, Comment::BASED_OPINION[:interview])
+  .radio
+    = label_tag(:based_opinion_gossips, 'Worked there')
+    = radio_button(:comment, :based_opinion, Comment::BASED_OPINION[:worked_there])
+  = hidden_field(:comment, :company_id, :value => company_id)
+  .form-group
+    = submit_tag("Add comment", class:'btn btn-default')

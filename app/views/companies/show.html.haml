@@ -1,0 +1,54 @@
+.row
+  .col-md-12
+    .jumbotron
+      .container
+        .col-md-6
+          %h2 
+            = @companyPresenter.company.name
+          %p 
+            = link_to @companyPresenter.company.url, @companyPresenter.company.url, target: :blank
+          %p
+            %small= @companyPresenter.company.category
+        #map.col-md-4
+-if user_signed_in?
+  .row
+    .col-md-12
+      %h3= "Comments (#{@companyPresenter.comments.count})"
+      - @companyPresenter.comments.each do |comment|
+        .row
+          .panel.panel-default
+            .panel-body
+              .col-md-2
+                %img{src:asset_path('resources/no-image-user.png'), class:'img-circle', style:'width:100px; height:100px;'}
+              .col-md-10
+                %p
+                  %span
+                    %strong= comment.user.username
+                %p
+                  %small= distance_of_time_in_words(comment.created_at, Time.now)
+                %p
+                  = comment.comment
+                %p
+                  = "Opinion based in: #{comment.based_opinion_text}"
+      = render 'shared/add_comments', :company_id => @companyPresenter.company.id
+:javascript
+  $(document).ready(function(){
+  
+  var urlOpenMap = "http://nominatim.openstreetmap.org/search?format=json&limit=5&q='#{@companyPresenter.company.address}'"
+  $.getJSON(urlOpenMap, function(data) {
+  
+    if( data != "")
+    {
+      //We have the data[0], because the proyect is a demo
+      var map = L.map('map').setView([data[0].lat, data[0].lon], 13);
+      
+      L.tileLayer('http://{s}.tile.cloudmade.com/#{APP_CONFIG['cloud_made_api']}/997/256/{z}/{x}/{y}.png', {
+          attribution: '',
+          maxZoom: 18
+      }).addTo(map);
+      
+      var marker = L.marker([data[0].lat, data[0].lon]).addTo(map);
+    }
+   });
+  });
+  

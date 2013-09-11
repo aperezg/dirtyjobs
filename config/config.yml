@@ -1,0 +1,6 @@
+production:
+  cloud_made_api:''
+test:
+  
+development:
+  cloud_made_api: 15e2e4878df14325bcda72e5bb819164

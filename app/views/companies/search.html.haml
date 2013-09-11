@@ -1,0 +1,4 @@
+.row
+  .col-md-12
+    %h2= "Found #{pluralize(@companies.count, 'match', 'matches')}:"
+= render 'shared/companies_comments', :companies => @companies

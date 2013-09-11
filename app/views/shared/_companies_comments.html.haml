@@ -1,0 +1,13 @@
+- companies.each do |company|
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-body
+          %h5= link_to company.name, company_path(company)
+          %p
+            %small= "Comentarios (#{company.comments.count})"
+          %p
+            - unless company.last_comment.nil?
+              %small= distance_of_time_in_words(company.last_comment.created_at, Time.now)
+              %br/
+              = company.last_comment.comment

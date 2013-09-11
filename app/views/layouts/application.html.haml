@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %title Dirtyjobs
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .container
+      %nav.navbar.navbar-default
+        .navbar-header.col-md-3
+          = link_to 'Dirty Jobs', root_path, class:'navbar-brand'
+        = render 'shared/search'
+        %ul.nav.navbar-nav.navbar-right
+          -if user_signed_in?
+            %li 
+              = link_to current_user.username, :personal_user_path
+            %li
+              = link_to 'Logout', destroy_user_session_path, :method => :delete
+          -else
+            %li
+              = link_to 'Sign up', new_user_registration_path
+            %li
+              = link_to 'Sign in', new_user_session_path
+      .row
+        .col-md-12
+          = yield

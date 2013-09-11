@@ -1,0 +1,4 @@
+%form{action:search_company_url,:method => :get, class:'navbar-form navbar-left'}
+  .form-group
+    = text_field_tag(:pattern, nil, class:'form-control', placeHolder:'Search')
+  = submit_tag("Search", class:'btn btn-default',name:nil)
